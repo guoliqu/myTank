@@ -17,7 +17,7 @@ public class TankFrame extends Frame {
     /**
      * 子弹集合
      */
-    List<Bullet> bullets = new ArrayList<>();
+    public List<Bullet> bullets = new ArrayList<>();
     /**
      * 敌方坦克集合
      */

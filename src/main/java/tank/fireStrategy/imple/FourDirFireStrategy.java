@@ -1,0 +1,17 @@
+package tank.fireStrategy.imple;
+
+import tank.*;
+import tank.fireStrategy.FireStrategy;
+
+public class FourDirFireStrategy implements FireStrategy {
+    @Override
+    public void fire(Tank tank) {
+        int bx = tank.getX() + Tank.WIDTH /2 - Bullet.WIDTH/2;
+        int by = tank.getY() + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
+        Dir[] dirs = Dir.values();
+        for(Dir dir : dirs) {
+            tank.getTankFrame().bullets.add(new Bullet(bx, by, dir, tank.getTankFrame(), tank.getGroup()));
+        }
+        if(tank.getGroup() == Group.GOOD) new Thread(()->new Audio("audio/tank_fire.wav").play()).start();
+    }
+}

@@ -1,5 +1,8 @@
 package tank;
 
+import tank.fireStrategy.FireStrategy;
+import tank.fireStrategy.imple.DefaultFireStrategy;
+
 import java.awt.*;
 import java.util.Random;
 
@@ -28,6 +31,7 @@ public class Tank {
      */
     Rectangle rect = new Rectangle();
 
+    private FireStrategy fireStrategy;
 
     private int x;
     private int y;
@@ -49,6 +53,19 @@ public class Tank {
         rect.y = this.y;
         rect.width = WIDTH;
         rect.height = HEIGHT;
+
+        if(group == Group.GOOD) {
+            String goodFSName = (String)PropertyMgr.get("goodFS");
+
+            try {
+                fireStrategy = (FireStrategy)Class.forName(goodFSName).getDeclaredConstructor().newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            fireStrategy = new DefaultFireStrategy();
+        }
     }
 
     public void paint(Graphics g) {
@@ -136,13 +153,7 @@ public class Tank {
      * 发射子弹
      */
     public void fire(){
-        int bx = this.x + WIDTH/2 - Bullet.WIDTH/2;
-        int by = this.y + HEIGHT/2 - Bullet.HEIGHT/2;
-
-        tankFrame.bullets.add(new Bullet(bx, by, this.dir, this.tankFrame, this.group));
-
-        if(this.group == Group.GOOD) new Thread(()->new Audio("audio/tank_fire.wav").play()).start();
-
+        fireStrategy.fire(this);
     }
 
     public void die() {
@@ -195,5 +206,21 @@ public class Tank {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public TankFrame getTankFrame() {
+        return tankFrame;
+    }
+
+    public void setTankFrame(TankFrame tankFrame) {
+        this.tankFrame = tankFrame;
+    }
+
+    public FireStrategy getFireStrategy() {
+        return fireStrategy;
+    }
+
+    public void setFireStrategy(FireStrategy fireStrategy) {
+        this.fireStrategy = fireStrategy;
     }
 }
