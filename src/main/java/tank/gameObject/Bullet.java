@@ -1,5 +1,9 @@
-package tank;
+package tank.gameObject;
 
+import tank.utils.ResourceMgr;
+import tank.TankFrame;
+import tank.gameEnum.Dir;
+import tank.gameEnum.Group;
 import tank.gameModel.GameModel;
 
 import java.awt.*;

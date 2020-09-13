@@ -1,4 +1,4 @@
-package tank;
+package tank.utils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

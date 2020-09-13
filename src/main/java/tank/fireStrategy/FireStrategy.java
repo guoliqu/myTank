@@ -1,6 +1,6 @@
 package tank.fireStrategy;
 
-import tank.Tank;
+import tank.gameObject.Tank;
 
 public interface FireStrategy {
 

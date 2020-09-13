@@ -1,5 +1,7 @@
-package tank;
+package tank.gameObject;
 
+import tank.utils.Audio;
+import tank.utils.ResourceMgr;
 import tank.gameModel.GameModel;
 
 import java.awt.*;

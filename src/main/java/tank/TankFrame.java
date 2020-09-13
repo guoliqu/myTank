@@ -1,6 +1,8 @@
 package tank;
 
+import tank.gameEnum.Dir;
 import tank.gameModel.GameModel;
+import tank.gameObject.Tank;
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -12,7 +14,7 @@ public class TankFrame extends Frame {
     /**
      * 场景大小
      */
-    static final int GAME_WIDTH = 1000, GAME_HEIGHT = 960;
+    public static final int GAME_WIDTH = 1000, GAME_HEIGHT = 960;
     /**
      * 背景图片
      */

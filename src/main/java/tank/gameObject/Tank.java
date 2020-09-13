@@ -1,7 +1,12 @@
-package tank;
+package tank.gameObject;
 
+import tank.utils.PropertyMgr;
+import tank.utils.ResourceMgr;
+import tank.TankFrame;
 import tank.fireStrategy.FireStrategy;
 import tank.fireStrategy.imple.DefaultFireStrategy;
+import tank.gameEnum.Dir;
+import tank.gameEnum.Group;
 import tank.gameModel.GameModel;
 
 import java.awt.*;
@@ -56,7 +61,7 @@ public class Tank {
         rect.height = HEIGHT;
 
         if(group == Group.GOOD) {
-            String goodFSName = (String)PropertyMgr.get("goodFS");
+            String goodFSName = (String) PropertyMgr.get("goodFS");
 
             try {
                 fireStrategy = (FireStrategy)Class.forName(goodFSName).getDeclaredConstructor().newInstance();

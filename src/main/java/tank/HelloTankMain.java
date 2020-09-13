@@ -1,5 +1,11 @@
 package tank;
 
+import tank.gameEnum.Dir;
+import tank.gameEnum.Group;
+import tank.gameObject.Tank;
+import tank.utils.Audio;
+import tank.utils.PropertyMgr;
+
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 

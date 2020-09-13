@@ -1,7 +1,11 @@
 package tank.fireStrategy.imple;
 
-import tank.*;
 import tank.fireStrategy.FireStrategy;
+import tank.gameEnum.Dir;
+import tank.gameEnum.Group;
+import tank.gameObject.Bullet;
+import tank.gameObject.Tank;
+import tank.utils.Audio;
 
 public class FourDirFireStrategy implements FireStrategy {
     @Override

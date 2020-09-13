@@ -1,6 +1,11 @@
 package tank.gameModel;
 
-import tank.*;
+import tank.gameEnum.Dir;
+import tank.gameEnum.Group;
+import tank.gameObject.Bullet;
+import tank.gameObject.Explode;
+import tank.gameObject.Tank;
+import tank.utils.PropertyMgr;
 
 import java.awt.*;
 import java.util.ArrayList;

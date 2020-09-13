@@ -1,9 +1,9 @@
 package tank.fireStrategy.imple;
 
-import tank.Audio;
-import tank.Bullet;
-import tank.Group;
-import tank.Tank;
+import tank.utils.Audio;
+import tank.gameObject.Bullet;
+import tank.gameEnum.Group;
+import tank.gameObject.Tank;
 import tank.fireStrategy.FireStrategy;
 
 public class DefaultFireStrategy implements FireStrategy {
