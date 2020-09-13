@@ -11,7 +11,7 @@ import java.awt.*;
 /**
  * 子弹对象
  */
-public class Bullet {
+public class Bullet extends GameObject{
     /**
      * 子弹速度
      */
@@ -24,14 +24,6 @@ public class Bullet {
      * 子弹长度
      */
     public static int HEIGHT = ResourceMgr.bulletD.getHeight();
-    /**
-     * x
-     */
-    private int x;
-    /**
-     * y
-     */
-    private int y;
     /**
      * 方向
      */
@@ -51,7 +43,7 @@ public class Bullet {
     /**
      * 子弹所在的矩形
      */
-    Rectangle rect = new Rectangle();
+    private Rectangle rect = new Rectangle();
 
     public Bullet(int x, int y, Dir dir, GameModel gameModel, Group group) {
         this.x = x;
@@ -70,9 +62,10 @@ public class Bullet {
      * 画出子弹位置
      * @param g
      */
+    @Override
     public void paint(Graphics g) {
         if(!living) {
-            gameModel.getBullets().remove(this);
+            gameModel.getGameObjectList().remove(this);
             return;
         }
         switch(dir) {
@@ -123,28 +116,9 @@ public class Bullet {
     }
 
     /**
-     * 子弹和坦克碰撞判断
-     * @param tank 坦克对象
-     */
-    public void collideWith(Tank tank) {
-        if (this.group == tank.getGroup()){
-            return;
-        }
-
-        if(rect.intersects(tank.rect)) {
-            tank.die();
-            this.die();
-            int eX = tank.getX() + Tank.WIDTH/2 - Explode.WIDTH/2;
-            int eY = tank.getY() + Tank.HEIGHT/2 - Explode.HEIGHT/2;
-            gameModel.getExplodes().add(new Explode(eX, eY, gameModel));
-        }
-
-    }
-
-    /**
      * 子弹死亡
      */
-    private void die() {
+    public void die() {
         this.living = false;
     }
 
@@ -154,5 +128,13 @@ public class Bullet {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public Rectangle getRect() {
+        return rect;
+    }
+
+    public void setRect(Rectangle rect) {
+        this.rect = rect;
     }
 }

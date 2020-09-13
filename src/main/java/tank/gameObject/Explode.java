@@ -9,11 +9,10 @@ import java.awt.*;
 /**
  * 坦克爆炸
  */
-public class Explode {
+public class Explode extends GameObject{
 	public static int WIDTH = ResourceMgr.explodes[0].getWidth();
 	public static int HEIGHT = ResourceMgr.explodes[0].getHeight();
 
-	private int x, y;
 	private GameModel gameModel;
 	private int step = 0;
 	
@@ -29,10 +28,11 @@ public class Explode {
 	 * 画出爆炸过程
 	 * @param g
 	 */
+	@Override
 	public void paint(Graphics g) {
 		g.drawImage(ResourceMgr.explodes[step++], x, y, null);
 		if(step >= ResourceMgr.explodes.length) {
-			gameModel.getExplodes().remove(this);
+			gameModel.getGameObjectList().remove(this);
 		}
 	}
 	

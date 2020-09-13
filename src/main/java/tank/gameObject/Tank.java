@@ -15,7 +15,7 @@ import java.util.Random;
 /**
  * 坦卡对象
  */
-public class Tank {
+public class Tank extends GameObject{
     /**
      * 坦克宽度
      */
@@ -35,17 +35,17 @@ public class Tank {
     /**
      * 坦克所在的矩形
      */
-    Rectangle rect = new Rectangle();
+    private Rectangle rect = new Rectangle();
 
     private FireStrategy fireStrategy;
 
-    private int x;
-    private int y;
     private boolean moving;
     private Dir dir;
     private GameModel gameModel;
     private Group group;
     private boolean living = true;
+    private int preX;
+    private int preY;
 
     public Tank(int x, int y, boolean moving, Dir dir, GameModel gameModel, Group group) {
         this.x = x;
@@ -74,9 +74,10 @@ public class Tank {
         }
     }
 
+    @Override
     public void paint(Graphics g) {
         if(!living) {
-            gameModel.getTanks().remove(this);
+            gameModel.getGameObjectList().remove(this);
         }
         switch(dir) {
             case LEFT:
@@ -104,6 +105,8 @@ public class Tank {
         if(!moving) {
             return;
         }
+        preX = x;
+        preY = y;
         switch (dir){
             case LEFT:
                 x -= SPEED;
@@ -228,5 +231,29 @@ public class Tank {
 
     public void setFireStrategy(FireStrategy fireStrategy) {
         this.fireStrategy = fireStrategy;
+    }
+
+    public Rectangle getRect() {
+        return rect;
+    }
+
+    public void setRect(Rectangle rect) {
+        this.rect = rect;
+    }
+
+    public int getPreX() {
+        return preX;
+    }
+
+    public void setPreX(int preX) {
+        this.preX = preX;
+    }
+
+    public int getPreY() {
+        return preY;
+    }
+
+    public void setPreY(int preY) {
+        this.preY = preY;
     }
 }
