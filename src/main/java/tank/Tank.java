@@ -2,6 +2,7 @@ package tank;
 
 import tank.fireStrategy.FireStrategy;
 import tank.fireStrategy.imple.DefaultFireStrategy;
+import tank.gameModel.GameModel;
 
 import java.awt.*;
 import java.util.Random;
@@ -37,16 +38,16 @@ public class Tank {
     private int y;
     private boolean moving;
     private Dir dir;
-    private TankFrame tankFrame;
+    private GameModel gameModel;
     private Group group;
     private boolean living = true;
 
-    public Tank(int x, int y, boolean moving, Dir dir, TankFrame tankFrame, Group group) {
+    public Tank(int x, int y, boolean moving, Dir dir, GameModel gameModel, Group group) {
         this.x = x;
         this.y = y;
         this.moving = moving;
         this.dir = dir;
-        this.tankFrame = tankFrame;
+        this.gameModel = gameModel;
         this.group = group;
 
         rect.x = this.x;
@@ -70,7 +71,7 @@ public class Tank {
 
     public void paint(Graphics g) {
         if(!living) {
-            tankFrame.tanks.remove(this);
+            gameModel.getTanks().remove(this);
         }
         switch(dir) {
             case LEFT:
@@ -208,12 +209,12 @@ public class Tank {
         this.group = group;
     }
 
-    public TankFrame getTankFrame() {
-        return tankFrame;
+    public GameModel getGameModel() {
+        return gameModel;
     }
 
-    public void setTankFrame(TankFrame tankFrame) {
-        this.tankFrame = tankFrame;
+    public void setGameModel(GameModel gameModel) {
+        this.gameModel = gameModel;
     }
 
     public FireStrategy getFireStrategy() {

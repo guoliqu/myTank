@@ -1,5 +1,7 @@
 package tank;
 
+import tank.gameModel.GameModel;
+
 import java.awt.*;
 
 /**
@@ -31,9 +33,9 @@ public class Bullet {
      */
     private Dir dir;
     /**
-     * 战斗场景
+     * gameModel
      */
-    private TankFrame tankFrame;
+    private GameModel gameModel;
     /**
      * 是否存活（是否有效）
      */
@@ -47,11 +49,11 @@ public class Bullet {
      */
     Rectangle rect = new Rectangle();
 
-    public Bullet(int x, int y, Dir dir, TankFrame tankFrame, Group group) {
+    public Bullet(int x, int y, Dir dir, GameModel gameModel, Group group) {
         this.x = x;
         this.y = y;
         this.dir = dir;
-        this.tankFrame = tankFrame;
+        this.gameModel = gameModel;
         this.group = group;
 
         rect.x = this.x;
@@ -66,7 +68,7 @@ public class Bullet {
      */
     public void paint(Graphics g) {
         if(!living) {
-            tankFrame.bullets.remove(this);
+            gameModel.getBullets().remove(this);
             return;
         }
         switch(dir) {
@@ -130,7 +132,7 @@ public class Bullet {
             this.die();
             int eX = tank.getX() + Tank.WIDTH/2 - Explode.WIDTH/2;
             int eY = tank.getY() + Tank.HEIGHT/2 - Explode.HEIGHT/2;
-            tankFrame.explodes.add(new Explode(eX, eY, tankFrame));
+            gameModel.getExplodes().add(new Explode(eX, eY, gameModel));
         }
 
     }

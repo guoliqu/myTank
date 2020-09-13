@@ -12,7 +12,7 @@ public class HelloTankMain {
         // 创建敌方坦克
         int initEnemyTankNum = Integer.parseInt(Objects.requireNonNull(PropertyMgr.get("initTankCount")).toString());
         for(int i = 0; i < initEnemyTankNum; i ++){
-            tankFrame.tanks.add(new Tank(50 + i*80, 200,true,  Dir.DOWN, tankFrame, Group.BAD));
+            tankFrame.gameModel.getTanks().add(new Tank(50 + i*80, 200,true,  Dir.DOWN, tankFrame.gameModel, Group.BAD));
         }
 
         new Thread(()->new Audio("audio/war1.wav").loop()).start();
