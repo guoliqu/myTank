@@ -16,10 +16,10 @@ public class Explode extends GameObject{
 	private GameModel gameModel;
 	private int step = 0;
 	
-	public Explode(int x, int y, GameModel gameModel) {
+	public Explode(int x, int y) {
 		this.x = x;
 		this.y = y;
-		this.gameModel = gameModel;
+		this.gameModel = GameModel.getInstance();
 
 		new Thread(()->new Audio("audio/explode.wav").play()).start();
 	}

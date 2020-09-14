@@ -20,7 +20,7 @@ public class TankFrame extends Frame {
      */
     Image offScreenImage = null;
 
-    public GameModel gameModel = new GameModel();
+    public GameModel gameModel = GameModel.getInstance();
 
 
     /**

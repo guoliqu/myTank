@@ -1,6 +1,5 @@
 package tank.collider;
 
-import tank.gameEnum.Dir;
 import tank.gameObject.GameObject;
 import tank.gameObject.Tank;
 
@@ -25,19 +24,10 @@ public class TankAndTankCollider implements Collider{
         if(tank1.getRect().intersects(tank2.getRect())) {
             // 直接掉头
             // tank1 change dir
-            backToLastPosition(tank1);
+            tank1.back();
             // tank2 change dir
-            backToLastPosition(tank2);
+            tank2.back();
         }
         return true;
-    }
-
-    /**
-     * 回到上个位置
-     * @param tank
-     */
-    private void backToLastPosition(Tank tank){
-        tank.setX(tank.getPreX());
-        tank.setY(tank.getPreY());
     }
 }

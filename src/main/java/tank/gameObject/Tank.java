@@ -47,12 +47,12 @@ public class Tank extends GameObject{
     private int preX;
     private int preY;
 
-    public Tank(int x, int y, boolean moving, Dir dir, GameModel gameModel, Group group) {
+    public Tank(int x, int y, boolean moving, Dir dir, Group group) {
         this.x = x;
         this.y = y;
         this.moving = moving;
         this.dir = dir;
-        this.gameModel = gameModel;
+        this.gameModel = GameModel.getInstance();
         this.group = group;
 
         rect.x = this.x;
@@ -165,6 +165,14 @@ public class Tank extends GameObject{
         fireStrategy.fire(this);
     }
 
+    /**
+     * 返回上一个位置
+     */
+    public void back() {
+        x = preX;
+        y = preY;
+    }
+
     public void die() {
         this.living = false;
     }
@@ -217,14 +225,6 @@ public class Tank extends GameObject{
         this.group = group;
     }
 
-    public GameModel getGameModel() {
-        return gameModel;
-    }
-
-    public void setGameModel(GameModel gameModel) {
-        this.gameModel = gameModel;
-    }
-
     public FireStrategy getFireStrategy() {
         return fireStrategy;
     }
@@ -256,4 +256,5 @@ public class Tank extends GameObject{
     public void setPreY(int preY) {
         this.preY = preY;
     }
+
 }

@@ -1,5 +1,6 @@
 package tank.collider;
 
+import tank.gameModel.GameModel;
 import tank.gameObject.Bullet;
 import tank.gameObject.Explode;
 import tank.gameObject.GameObject;
@@ -34,7 +35,7 @@ public class BulletTankCollider implements Collider{
             bullet.die();
             int eX = tank.getX() + Tank.WIDTH/2 - Explode.WIDTH/2;
             int eY = tank.getY() + Tank.HEIGHT/2 - Explode.HEIGHT/2;
-            tank.getGameModel().getGameObjectList().add(new Explode(eX, eY, tank.getGameModel()));
+            GameModel.getInstance().getGameObjectList().add(new Explode(eX, eY));
             return false;
         }
 

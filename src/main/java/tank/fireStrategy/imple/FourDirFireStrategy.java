@@ -3,6 +3,7 @@ package tank.fireStrategy.imple;
 import tank.fireStrategy.FireStrategy;
 import tank.gameEnum.Dir;
 import tank.gameEnum.Group;
+import tank.gameModel.GameModel;
 import tank.gameObject.Bullet;
 import tank.gameObject.Tank;
 import tank.utils.Audio;
@@ -14,7 +15,7 @@ public class FourDirFireStrategy implements FireStrategy {
         int by = tank.getY() + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
         Dir[] dirs = Dir.values();
         for(Dir dir : dirs) {
-            tank.getGameModel().getGameObjectList().add(new Bullet(bx, by, dir, tank.getGameModel(), tank.getGroup()));
+            GameModel.getInstance().getGameObjectList().add(new Bullet(bx, by, dir, tank.getGroup()));
         }
         if(tank.getGroup() == Group.GOOD) new Thread(()->new Audio("audio/tank_fire.wav").play()).start();
     }

@@ -45,17 +45,18 @@ public class Bullet extends GameObject{
      */
     private Rectangle rect = new Rectangle();
 
-    public Bullet(int x, int y, Dir dir, GameModel gameModel, Group group) {
+    public Bullet(int x, int y, Dir dir, Group group) {
         this.x = x;
         this.y = y;
         this.dir = dir;
-        this.gameModel = gameModel;
         this.group = group;
 
         rect.x = this.x;
         rect.y = this.y;
         rect.width = WIDTH;
         rect.height = HEIGHT;
+
+        this.gameModel = GameModel.getInstance();
     }
 
     /**
