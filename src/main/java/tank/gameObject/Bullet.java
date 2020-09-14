@@ -29,10 +29,6 @@ public class Bullet extends GameObject{
      */
     private Dir dir;
     /**
-     * gameModel
-     */
-    private GameModel gameModel;
-    /**
      * 是否存活（是否有效）
      */
     private boolean living = true;
@@ -56,7 +52,6 @@ public class Bullet extends GameObject{
         rect.width = WIDTH;
         rect.height = HEIGHT;
 
-        this.gameModel = GameModel.getInstance();
     }
 
     /**
@@ -66,7 +61,7 @@ public class Bullet extends GameObject{
     @Override
     public void paint(Graphics g) {
         if(!living) {
-            gameModel.getGameObjectList().remove(this);
+            GameModel.getInstance().getGameObjectList().remove(this);
             return;
         }
         switch(dir) {

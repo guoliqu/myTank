@@ -41,7 +41,6 @@ public class Tank extends GameObject{
 
     private boolean moving;
     private Dir dir;
-    private GameModel gameModel;
     private Group group;
     private boolean living = true;
     private int preX;
@@ -52,7 +51,6 @@ public class Tank extends GameObject{
         this.y = y;
         this.moving = moving;
         this.dir = dir;
-        this.gameModel = GameModel.getInstance();
         this.group = group;
 
         rect.x = this.x;
@@ -77,7 +75,7 @@ public class Tank extends GameObject{
     @Override
     public void paint(Graphics g) {
         if(!living) {
-            gameModel.getGameObjectList().remove(this);
+            GameModel.getInstance().getGameObjectList().remove(this);
         }
         switch(dir) {
             case LEFT:
