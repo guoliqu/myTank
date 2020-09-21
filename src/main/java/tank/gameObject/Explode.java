@@ -33,7 +33,15 @@ public class Explode extends GameObject{
 			GameModel.getInstance().getGameObjectList().remove(this);
 		}
 	}
-	
-	
+
+	@Override
+	public int getWidth() {
+		return WIDTH;
+	}
+
+	@Override
+	public int getHeight() {
+		return HEIGHT;
+	}
 
 }

@@ -118,6 +118,16 @@ public class Bullet extends GameObject{
         this.living = false;
     }
 
+    @Override
+    public int getWidth() {
+        return WIDTH;
+    }
+
+    @Override
+    public int getHeight() {
+        return HEIGHT;
+    }
+
     public Group getGroup() {
         return group;
     }
@@ -132,5 +142,13 @@ public class Bullet extends GameObject{
 
     public void setRect(Rectangle rect) {
         this.rect = rect;
+    }
+
+    public boolean isLiving() {
+        return living;
+    }
+
+    public void setLiving(boolean living) {
+        this.living = living;
     }
 }

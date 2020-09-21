@@ -171,6 +171,16 @@ public class Tank extends GameObject{
         y = preY;
     }
 
+    @Override
+    public int getWidth() {
+        return WIDTH;
+    }
+
+    @Override
+    public int getHeight() {
+        return HEIGHT;
+    }
+
     public void die() {
         this.living = false;
     }
