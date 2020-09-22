@@ -1,15 +1,21 @@
 package tank.gameObject;
 
-import tank.utils.PropertyMgr;
-import tank.utils.ResourceMgr;
 import tank.TankFrame;
 import tank.fireStrategy.FireStrategy;
 import tank.fireStrategy.imple.DefaultFireStrategy;
 import tank.gameEnum.Dir;
 import tank.gameEnum.Group;
 import tank.gameModel.GameModel;
+import tank.observer.TankFireEvent;
+import tank.observer.TankFireHandler;
+import tank.observer.TankFireObserver;
+import tank.utils.PropertyMgr;
+import tank.utils.ResourceMgr;
 
 import java.awt.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -38,6 +44,8 @@ public class Tank extends GameObject{
     private Rectangle rect = new Rectangle();
 
     private FireStrategy fireStrategy;
+
+    private List<TankFireObserver> fireObservers = Collections.singletonList(new TankFireHandler());
 
     private boolean moving;
     private Dir dir;
@@ -169,6 +177,13 @@ public class Tank extends GameObject{
     public void back() {
         x = preX;
         y = preY;
+    }
+
+    public void handleFireKey(){
+        TankFireEvent tankFireEvent = new TankFireEvent(this);
+        for (TankFireObserver tankFireObserver : fireObservers){
+            tankFireObserver.actionOnFire(tankFireEvent);
+        }
     }
 
     @Override
